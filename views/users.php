@@ -10,10 +10,12 @@
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
   </head>
   <body>
+  <?php if($users): ?>
 	<ul>
-		<li><a href="?id=1">user 1</a></li>
-		<li><a href="?id=2">user 2</a></li>
-		<li><a href="?id=3">user 3</a></li>
+	<?php foreach($users as $user): ?>
+		<li><a href="?id=<?= $user->id ?>">user <?= $user->id ?></a></li>
+	<?php endforeach; ?>
 	</ul>
+  <?php endif; ?>
   </body>
 </html>
