@@ -1,23 +1,16 @@
 <?php
-define('DB_PATH', $_SERVER['DOCUMENT_ROOT'] . '/datas/data.db');
+require('./configs/config.php');
+require('./configs/dbconnection.php');
 
-try {
-	$connection = new PDO('sqlite:' . DB_PATH);
-	$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	$connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-} catch (PDOException $e) {
-	exit($e->getMessage());
-}
+$connection = getConnection();
 
 if (isset($_GET['id'])) {
 	$id = $_GET['id'];
-	$userRequest = 'SELECT * FROM users WHERE id = ' . $id;
+	$user = find($connection, $id);
+
 	$view = 'user.php';
 } else {
-	$userRequest = 'SELECT * FROM users';
-	$pdoSt = $connection->query($userRequest); 
-	//this is a "PDO statement"
-	$users = $pdoSt->fetchAll();
+	$userS = all($connection);
 	$view = 'users.php';
 }
 
