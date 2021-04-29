@@ -5,13 +5,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>
-	  Pierre
+	  <?= $user->fullname ?>
 	</title>
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
   </head>
   <body>
-  	<h1>Pierre Pomier</h1>
-  	<p>pompipi@gmail.com</p>
+  	<h1><?= $user->fullname ?></h1>
+  	<p><?= $user->email ?></p>
 	<div>
 		<a href="index.php">Go back to list</a>
 	</div>
